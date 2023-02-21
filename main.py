@@ -1,6 +1,8 @@
 import io
 import requests
 
+import tensorflow as tf
+from tensorflow.python.keras.layers import Input, Dense
 import numpy as np
 from fastapi import FastAPI
 from io import BytesIO
@@ -18,7 +20,7 @@ app = FastAPI()
 np.set_printoptions(suppress=True)
 
 # Load the model
-model = load_model("keras_Model.h5", compile=False)
+model = tf.keras.models.load_model("keras_Model.h5", compile=False)
 
 # Load the labels
 class_names = open("labels.txt", "r").readlines()
