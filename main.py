@@ -1,4 +1,6 @@
 import io
+import os
+
 import requests
 
 import tensorflow as tf
@@ -19,12 +21,17 @@ app = FastAPI()
 # Disable scientific notation for clarity
 np.set_printoptions(suppress=True)
 
+
 # Load the model
-model = tf.keras.models.load_model("keras_Model.h5", compile=False)
+model_path = "keras_Model.h5"
+m_path = os.path.basename(model_path)
+
+model = load_model(m_path, compile=False)
 
 # Load the labels
 class_names = open("labels.txt", "r").readlines()
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+
 
 
 @app.get('/')
