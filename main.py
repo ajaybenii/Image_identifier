@@ -74,11 +74,14 @@ async def insert_image_by_file(insert_image: UploadFile=File(...)):
     if class_name[2:] == "Not_valid\n":
 
         obj_coordinates = "Not_Valid"
+        score = confidence_score*100
 
     else:
         obj_coordinates = "Valid"
+        score = confidence_score*100
     
-    return {"response" : obj_coordinates}
+    return {"response" : obj_coordinates,
+            "confidence_score": score}
 
 
 
@@ -124,11 +127,14 @@ async def insert_image_by_url(insert_image:str):
             if class_name[2:] == "Not_valid\n":
 
                 obj_coordinates = "Not_Valid"
+                score = confidence_score*100
 
             else:
                 obj_coordinates = "Valid"
-    
-            return {"response" : obj_coordinates }
+                score = confidence_score*100
+
+            return {"response" : obj_coordinates,
+                    "confidence_score": score}
             
         else:
             return{"Invalid image url"}
