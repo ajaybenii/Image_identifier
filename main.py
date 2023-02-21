@@ -23,7 +23,7 @@ np.set_printoptions(suppress=True)
 
 
 # Load the model
-model_path = "keras_Model.h5"
+model_path = "keras_model.h5"
 m_path = os.path.basename(model_path)
 
 model = load_model(m_path, compile=False)
