@@ -1,14 +1,11 @@
-import os
 import io
-import PIL
 import requests
 
 import numpy as np
 from fastapi import FastAPI
 from io import BytesIO
-from PIL import Image, ImageEnhance
+from PIL import Image
 from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import StreamingResponse ,FileResponse
 from urllib.parse import urlparse
 from keras.models import load_model  # TensorFlow is required for Keras to work
 from PIL import Image, ImageOps  # Install pillow instead of PIL
@@ -67,8 +64,8 @@ async def insert_image_by_file(insert_image: UploadFile=File(...)):
     confidence_score = prediction[0][index]
 
     # Print prediction and confidence score
-    print("Class:", class_name[2:], end="")
-    print("Confidence Score:", confidence_score)
+    # print("Class:", class_name[2:], end="")
+    # print("Confidence Score:", confidence_score)
 
     # obj_coordinates = class_name[2:]
     if class_name[2:] == "Not_valid\n":
@@ -120,8 +117,8 @@ async def insert_image_by_url(insert_image:str):
             confidence_score = prediction[0][index]
 
             # Print prediction and confidence score
-            print("Class:", class_name[2:], end="")
-            print("Confidence Score:", confidence_score)
+            # print("Class:", class_name[2:], end="")
+            # print("Confidence Score:", confidence_score)
             # obj_coordinates = class_name[2:]
 
             if class_name[2:] == "Not_valid\n":
